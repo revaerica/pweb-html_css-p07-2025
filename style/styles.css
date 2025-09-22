@@ -237,19 +237,76 @@ h2::after {
   background-color: var(--light-bg);
 }
 
+/* --- PROFILE SECTION (UPDATED) --- */
+#profile {
+  position: relative;
+  padding: 120px 20px;
+  background: linear-gradient(135deg, #0d0d0d, #161616, #0a0a0a);
+  overflow: hidden;
+}
+
+#profile::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 30%, rgba(0, 200, 255, 0.15), transparent 60%),
+              radial-gradient(circle at 80% 70%, rgba(255, 0, 150, 0.15), transparent 70%);
+  filter: blur(50px);
+  z-index: 0;
+  animation: profileGlow 14s ease-in-out infinite alternate;
+}
+
+@keyframes profileGlow {
+  0% { transform: scale(1) translateX(0); opacity: 0.8; }
+  100% { transform: scale(1.1) translateX(25px); opacity: 1; }
+}
+
+#profile .container {
+  position: relative;
+  z-index: 2;
+  max-width: 1000px;
+  margin: auto;
+}
+
+#profile h2 {
+  text-align: center;
+  color: #00d4ff;
+  font-size: 2.2rem;
+  margin-bottom: 50px;
+  text-shadow: 0 0 12px rgba(0, 212, 255, 0.6);
+}
+
 .profile-content {
   display: flex;
   align-items: center;
   gap: 50px;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .profile-pic {
   width: 280px;
   height: 280px;
   border-radius: 50%;
-  border: 5px solid var(--primary-color);
+  border: 5px solid rgba(0, 212, 255, 0.8);
   object-fit: cover;
   flex-shrink: 0;
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.4), 0 0 35px rgba(255, 0, 110, 0.3);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.profile-pic:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(0, 212, 255, 0.6), 0 0 50px rgba(255, 0, 110, 0.5);
+}
+
+.profile-content p {
+  flex: 1;
+  font-size: 1.15rem;
+  color: #e8e8e8;
+  line-height: 1.9;
+  text-shadow: 0 0 6px rgba(0,0,0,0.5);
+  max-width: 600px;
 }
 
 .project-grid {
@@ -341,16 +398,81 @@ h2::after {
   border-bottom: none;
 }
 
-#company h3 {
+/* --- COMPANY SECTION (SOFT FUTURISTIC) --- */
+#company {
+  position: relative;
+  padding: 140px 20px;
   text-align: center;
-  color: var(--primary-color);
-  font-size: 1.8rem;
-  margin-bottom: 10px;
+  background: linear-gradient(135deg, #0a0a0a, #151515, #0d0d0d);
+  overflow: hidden;
 }
+
+/* Aurora mesh glow */
+#company::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 30% 40%, rgba(0, 255, 200, 0.18), transparent 60%),
+              radial-gradient(circle at 70% 60%, rgba(255, 0, 110, 0.18), transparent 60%),
+              radial-gradient(circle at 50% 80%, rgba(0, 180, 255, 0.15), transparent 70%);
+  filter: blur(60px);
+  animation: auroraMove 16s ease-in-out infinite alternate;
+  z-index: 0;
+}
+
+@keyframes auroraMove {
+  0%   { transform: translateY(0) translateX(0) scale(1); opacity: 0.7; }
+  100% { transform: translateY(-60px) translateX(40px) scale(1.1); opacity: 1; }
+}
+
+#company .container {
+  position: relative;
+  z-index: 2;
+}
+
+#company h2 {
+  color: #ffffff;
+  font-size: 2.1rem;
+  margin-bottom: 15px;
+  letter-spacing: 1.5px;
+  text-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
+}
+
+#company h3 {
+  font-size: 2.3rem;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #db4f4f;
+  text-shadow: 0 0 12px rgba(0, 0, 0, 0.616);
+}
+
 #company p {
-  text-align: center;
-  max-width: 700px;
-  margin: 0 auto;
+  font-size: 1.1rem;
+  color: #e8e8e8;
+  max-width: 780px;
+  margin: 0 auto 50px;
+  line-height: 1.8;
+  text-shadow: 0 0 5px rgba(0,0,0,0.4);
+}
+
+.company-video-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.company-video-center {
+  width: 80%;
+  max-width: 760px;
+  border-radius: 18px;
+  overflow: hidden;
+  box-shadow: 0 0 25px rgba(0, 212, 255, 0.4), 0 0 40px rgba(255, 0, 110, 0.4);
+  transition: transform 0.5s ease, box-shadow 0.5s ease;
+}
+
+.company-video-center:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 35px rgba(0, 212, 255, 0.6), 0 0 60px rgba(255, 0, 110, 0.6);
 }
 
 /* --- 5. FOOTER (DESAIN BARU & PROFESIONAL) --- */
