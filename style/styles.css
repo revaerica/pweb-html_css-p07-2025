@@ -338,6 +338,12 @@ h2::after {
   max-width: 600px;
 }
 
+#projects {
+  background:radial-gradient(circle at 80% 70%, rgba(155, 87, 127, 0.15), transparent 70%); padding: 60px 20px;
+  border-radius: 0px; 
+  color: #f0f0f0;
+}
+
 .project-grid {
   display: flex;
   gap: 30px;
@@ -429,20 +435,71 @@ h2::after {
   transform: translateX(5px);
 }
 
-#award ul {
-  list-style: none;
-  max-width: 600px;
-  margin: 20px auto;
+#award {
+  position: relative;
+  padding: 80px 20px;
+  color: #fff;
   text-align: center;
+  background: linear-gradient(rgba(0,0,0,0.85), rgba(0,0,0,0.9)),
+              url('../images/nyc-night.jpg') center/cover fixed;
+  overflow: hidden;
 }
 
-#award li {
-  font-size: 1.1rem;
-  padding: 10px;
-  border-bottom: 1px dotted var(--light-text-color);
+#award h2 {
+  font-size: 2.2rem;
+  margin-bottom: 40px;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  text-shadow: 0 0 15px rgba(196, 26, 18, 0.8);
 }
-#award li:last-child {
+
+.award-scroll {
+  max-height: 280px;
+  overflow-y: auto;
+  margin: 0 auto;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 12px;
+  box-shadow: inset 0 0 20px rgba(196, 26, 18, 0.3);
+  scrollbar-width: thin;
+  scrollbar-color: #c41a12 #1a1a1a; /* Firefox */
+}
+
+/* Scrollbar custom (untuk Webkit: Chrome, Edge, Safari) */
+.award-scroll::-webkit-scrollbar {
+  width: 8px;
+}
+.award-scroll::-webkit-scrollbar-thumb {
+  background-color: #c41a12;
+  border-radius: 10px;
+}
+.award-scroll::-webkit-scrollbar-track {
+  background: #1a1a1a;
+}
+
+.award-item {
+  font-size: 1.1rem;
+  padding: 14px;
+  margin: 8px 0;
+  border-bottom: 1px dotted rgba(255, 255, 255, 0.3);
+  color: #fff;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.award-item:hover {
+  transform: translateX(8px);
+  color: #c41a12;
+}
+
+.award-item:last-child {
   border-bottom: none;
+}
+
+/* hanya isi yang jalan */
+@keyframes scrollDown {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(-50%); }
 }
 
 /* --- COMPANY SECTION --- */
