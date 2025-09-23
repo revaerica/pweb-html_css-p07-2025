@@ -1,7 +1,7 @@
 /* --- TEMA & LAYOUT UTAMA --- */
 :root {
     --spidey-red: #e62117;
-    --spidey-blue: #007bff; /* Biru yang lebih cerah untuk kontras */
+    --spidey-blue: #007bff;
     --dark-bg-primary: #1a1a1a;
     --dark-bg-secondary: #2c2c2c;
     --text-primary: #f0f0f0;
@@ -10,7 +10,7 @@
 }
 
 body {
-    background-color: #0f0f0f;
+    background: radial-gradient(circle at top, #0f0f0f, #000);
     font-family: 'Roboto', sans-serif;
     color: var(--text-primary);
     line-height: 1.6;
@@ -18,54 +18,57 @@ body {
     padding: 20px;
 }
 
+/* Container utama */
 .cv-container {
     display: flex;
     flex-direction: column;
     max-width: 1200px;
     margin: 20px auto;
     background: var(--dark-bg-primary);
-    box-shadow: 0 0 25px rgba(230, 33, 23, 0.2);
+    box-shadow: 0 0 25px rgba(230, 33, 23, 0.2),
+                0 0 40px rgba(0, 123, 255, 0.15);
     border: 1px solid var(--border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    animation: fadeIn 1s ease-out;
 }
 
+/* Body Grid */
 .cv-body {
     display: grid;
-    grid-template-columns: 1fr; /* Default 1 kolom untuk mobile */
+    grid-template-columns: 1fr;
 }
-
 @media (min-width: 992px) {
     .cv-body {
-        grid-template-columns: 2.5fr 1fr; /* 2 kolom di desktop */
+        grid-template-columns: 2.5fr 1fr;
     }
 }
 
-
 /* --- HEADER --- */
 .cv-header {
-    padding: 40px;
+    padding: 50px 20px;
     text-align: center;
     border-bottom: 1px solid var(--border-color);
+    background: radial-gradient(circle at center, rgba(230,33,23,0.08) 0%, transparent 70%),
+                url('https://www.transparenttextures.com/patterns/dark-mosaic.png');
+    background-size: cover;
+    position: relative;
 }
-
 .cv-header h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin: 0;
-    letter-spacing: 2px;
-    color: var(--text-primary);
+    text-shadow: 0 0 15px rgba(230, 33, 23, 0.8),
+                 0 0 25px rgba(0, 123, 255, 0.6);
+    animation: glowText 2s infinite alternate;
 }
-
 .job-title {
     font-size: 1.5rem;
     font-weight: 300;
-    margin: 10px 0 20px 0;
+    margin: 10px 0 20px;
     background: linear-gradient(90deg, var(--spidey-red), var(--spidey-blue));
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
+    text-transform: uppercase;
+    letter-spacing: 2px;
 }
-
 .summary {
     max-width: 800px;
     margin: 0 auto;
@@ -74,112 +77,109 @@ body {
     font-weight: 300;
 }
 
-
 /* --- KONTEN UTAMA --- */
 .main-content {
     padding: 30px;
 }
-
 .cv-section h2 {
     font-size: 1.6rem;
-    font-weight: 500;
+    font-weight: 600;
     color: var(--text-primary);
     border-bottom: 2px solid var(--spidey-red);
     padding-bottom: 10px;
     margin-bottom: 30px;
     display: flex;
     align-items: center;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
-
 .cv-section h2 i {
     margin-right: 15px;
     color: var(--spidey-red);
 }
 
-
-/* --- TIMELINE PENGALAMAN --- */
+/* --- TIMELINE --- */
 .timeline {
+    border-left: 2px solid rgba(0, 123, 255, 0.6);
+    padding-left: 20px;
     position: relative;
-    padding-left: 30px;
-    border-left: 2px solid var(--border-color);
 }
-
 .timeline-item {
     position: relative;
     margin-bottom: 30px;
+    transition: transform 0.3s;
 }
-
+.timeline-item:hover {
+    transform: translateX(8px);
+}
 .timeline-dot {
     position: absolute;
-    left: -40px;
+    left: -42px;
     top: 5px;
     width: 15px;
     height: 15px;
-    background-color: var(--spidey-red);
     border-radius: 50%;
     border: 3px solid var(--dark-bg-primary);
+    background: radial-gradient(circle, var(--spidey-red), #800000);
+    box-shadow: 0 0 8px var(--spidey-red);
+    animation: pulseDot 2s infinite;
 }
-
 .timeline-content h3 {
     margin: 0;
     font-size: 1.2rem;
     font-weight: 500;
 }
-
 .company {
     color: var(--spidey-blue);
-    font-weight: 400;
+    font-weight: 500;
 }
-
 .date, .university {
     color: var(--text-secondary);
     font-size: 0.9rem;
     margin-bottom: 10px;
     font-style: italic;
 }
-
 .timeline-content ul {
     padding-left: 20px;
     color: var(--text-secondary);
 }
 
-
 /* --- SIDEBAR --- */
 .sidebar {
-    background: var(--dark-bg-secondary);
-    padding: 30px;
+    background: linear-gradient(180deg, rgba(44,44,44,0.95), rgba(26,26,26,0.95));
+    border-left: 2px solid var(--spidey-blue);
+    box-shadow: inset 0 0 15px rgba(0,123,255,0.2);
+    padding: 25px;
 }
-@media (min-width: 992px) {
-    .sidebar {
-        border-left: 1px solid var(--border-color);
-    }
-}
-
-
 .sidebar-section h3 {
     color: var(--text-primary);
     font-size: 1.3rem;
     margin-bottom: 15px;
     border-bottom: 2px solid var(--spidey-blue);
     padding-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
-/* Contact & Pro Skills */
+/* Contact & Skills */
 .contact-list, .pro-skills {
     list-style: none;
     padding: 0;
 }
 .contact-list li, .pro-skills li {
-    margin-bottom: 10px;
+    margin-bottom: 12px;
     color: var(--text-secondary);
     display: flex;
     align-items: center;
+    transition: color 0.3s;
 }
 .contact-list i {
     width: 25px;
     color: var(--spidey-blue);
 }
-
+.contact-list li:hover, .pro-skills li:hover {
+    color: var(--spidey-red);
+}
 
 /* --- SKILL BARS --- */
 .skills-list {
@@ -202,86 +202,57 @@ body {
     height: 100%;
     background: linear-gradient(90deg, var(--spidey-blue), var(--spidey-red));
     border-radius: 5px;
+    animation: growSkill 2s ease forwards;
 }
 
-
-/* --- TOMBOL PRINT --- */
+/* --- BUTTON --- */
 .print-button-container {
     text-align: center;
-    margin-bottom: 30px;
+    margin: 20px 0 30px;
 }
-
 .print-button-container button {
     width: 100%;
     padding: 12px;
-    background-color: var(--spidey-red);
+    background: linear-gradient(90deg, var(--spidey-red), var(--spidey-blue));
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 8px;
     cursor: pointer;
     font-size: 1rem;
-    font-weight: 500;
-    transition: background-color 0.3s;
+    font-weight: 600;
+    letter-spacing: 1px;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
-
 .print-button-container button:hover {
-    background-color: #c41a12;
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0,123,255,0.6);
 }
 
+/* --- ANIMASI --- */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes glowText {
+    from { text-shadow: 0 0 10px var(--spidey-red); }
+    to { text-shadow: 0 0 25px var(--spidey-blue); }
+}
+@keyframes pulseDot {
+    0%, 100% { box-shadow: 0 0 8px var(--spidey-red); }
+    50% { box-shadow: 0 0 15px var(--spidey-blue); }
+}
+@keyframes growSkill {
+    from { width: 0; }
+    to { width: 100%; }
+}
 
-/* --- GAYA UNTUK PRINT (SANGAT PENTING) --- */
 @media print {
-    body {
-        background-color: #fff !important;
-        padding: 0;
-        margin: 0;
-    }
-
-    .cv-container {
-        box-shadow: none !important;
-        border: none !important;
-        max-width: 100% !important;
-        color: #000 !important;
-    }
-    
-    .cv-body {
-        display: block !important; /* Kembali ke 1 kolom saat print */
-    }
-
-    .main-content, .sidebar {
-        padding: 10px !important;
-    }
-
-    .print-button-container {
-        display: none !important;
-    }
-
-    /* Reset semua warna ke hitam dan putih */
-    :root {
-        --spidey-red: #000;
-        --spidey-blue: #000;
-        --dark-bg-primary: #fff;
-        --dark-bg-secondary: #fff;
-        --text-primary: #000;
-        --text-secondary: #333;
-        --border-color: #ccc;
-    }
-
-    .job-title {
-        -webkit-text-fill-color: var(--spidey-red) !important;
-        background: none !important;
-    }
-
-    .sidebar {
-        background: none !important;
-        border: none !important;
-    }
-
-    .skill-bar {
-        border: 1px solid #ccc;
-        background: #eee !important;
-    }
-    .skill-level {
-        background: #999 !important;
-    }
+  body {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  * {
+    text-shadow: none !important; /* hindari blur efek */
+    box-shadow: none !important;
+  }
 }
